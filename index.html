@@ -8,12 +8,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --carbon: #1e1e1e;
+      --carbon: #121212;
+      --carbon-deep: #0d0d0d;
       --golden: #c9a74c;
-      --anthracite: #7a7a7a;
-      --bg-light: #f5f5f5;
-      --bg-dark: #121212;
-      --glass: rgba(255, 255, 255, 0.06);
+      --anthracite: #8f8f8f;
+      --white: #ffffff;
+      --glass: rgba(255, 255, 255, 0.05);
       --tricolor: linear-gradient(to right, #008C45, #F4F5F0, #CD212A);
       --transition: 0.3s ease-in-out;
     }
@@ -26,19 +26,14 @@
 
     html, body {
       font-family: 'Outfit', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--carbon);
-      transition: background-color var(--transition), color var(--transition);
+      background-color: var(--carbon);
+      color: var(--white);
       scroll-behavior: smooth;
-    }
-
-    body.dark {
-      background-color: var(--bg-dark);
-      color: white;
+      transition: background-color var(--transition), color var(--transition);
     }
 
     header {
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
       background: var(--glass);
       padding: 1.2rem 2rem;
       display: flex;
@@ -46,8 +41,8 @@
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 999;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
     }
 
     .logo {
@@ -60,11 +55,12 @@
     }
 
     nav a {
-      color: white;
+      color: var(--white);
       text-decoration: none;
       margin-left: 2rem;
       position: relative;
       font-weight: 500;
+      transition: var(--transition);
     }
 
     nav a::after {
@@ -82,48 +78,29 @@
       width: 100%;
     }
 
-    .toggle-mode {
-      margin-left: 2rem;
-      background: none;
-      border: 2px solid var(--golden);
-      color: var(--golden);
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .toggle-mode:hover {
-      background: var(--golden);
-      color: black;
-    }
-
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1607865470261-3c46d1b7f8f7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1607865470261-3c46d1b7f8f7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 2rem;
-      position: relative;
-      overflow: hidden;
       animation: fadeIn 1.5s ease;
     }
 
     .hero h2 {
       font-size: 3.5rem;
       color: var(--golden);
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
       animation: fadeUp 1.2s ease;
     }
 
     .hero p {
       font-size: 1.2rem;
       max-width: 700px;
-      color: #e0e0e0;
+      color: var(--anthracite);
       margin-top: 1rem;
       animation: fadeUp 1.6s ease;
     }
@@ -144,31 +121,25 @@
     }
 
     .section {
-      margin-bottom: 4rem;
-      background: white;
+      background: var(--carbon-deep);
       border-radius: 20px;
       padding: 2.5rem;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 50px rgba(0,0,0,0.4);
+      margin-bottom: 4rem;
+      backdrop-filter: blur(6px);
       transition: var(--transition);
-    }
-
-    body.dark .section {
-      background: #1e1e1e;
     }
 
     .section h3 {
       font-size: 2rem;
       margin-bottom: 1.2rem;
+      color: var(--white);
     }
 
     .section p, .section li {
       font-size: 1.1rem;
       line-height: 1.8;
-      color: #444;
-    }
-
-    body.dark .section p, body.dark .section li {
-      color: #ccc;
+      color: var(--anthracite);
     }
 
     ul {
@@ -176,12 +147,13 @@
     }
 
     footer {
-      background: var(--carbon);
-      color: white;
+      background: var(--carbon-deep);
+      color: var(--white);
       text-align: center;
       padding: 2rem;
       font-size: 0.95rem;
-      margin-top: 4rem;
+      letter-spacing: 0.5px;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     .reveal {
@@ -200,7 +172,7 @@
         font-size: 2.2rem;
       }
 
-      nav a, .toggle-mode {
+      nav a {
         margin-left: 1rem;
       }
     }
@@ -214,34 +186,33 @@
       <a href="index.html">Home</a>
       <a href="progetto.html">Progetto / Documentazione</a>
       <a href="contatti.html">Contatti</a>
-      <button class="toggle-mode" onclick="toggleMode()">🌙</button>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Orbea Alma H30 – Edizione Esclusiva</h2>
-    <p>Rivoluziona l'estetica della tua Alma con il look ufficiale della OIZ M LTD: colori racing, dettagli unici, pura eleganza tecnica.</p>
+    <h2>Orbea Alma H30 – Edizione Limitata</h2>
+    <p>Una reinterpretazione totale, ispirata alla verniciatura della OIZ M LTD. Stile da competizione, anima racing, design senza compromessi.</p>
   </section>
 
   <main>
     <section class="section reveal">
       <h3>Obiettivo</h3>
-      <p>Riverniciare completamente la <strong>Orbea Alma H30</strong> (2022) mantenendo le grafiche originali, ma adottando fedelmente la livrea della <strong>OIZ M LTD</strong> – la bici campione del mondo.</p>
+      <p>Trasformare la <strong>Orbea Alma H30</strong> (2022) in una versione esclusiva: mantenere le grafiche originali ma adottare il colore ufficiale della <strong>OIZ M LTD</strong> (PDF tecnico di riferimento incluso).</p>
     </section>
 
     <section class="section reveal">
       <h3>Colori e dettagli</h3>
       <ul>
-        <li><strong>Carbon Raw:</strong> base opaca strutturata</li>
-        <li><strong>Metallic Golden Sand:</strong> loghi Orbea principali</li>
-        <li><strong>Anthracite Glitter:</strong> dettagli secondari e nome</li>
+        <li><strong>Carbon Raw:</strong> base opaca</li>
+        <li><strong>Metallic Golden Sand:</strong> loghi principali</li>
+        <li><strong>Anthracite Glitter:</strong> scritte secondarie e nome</li>
       </ul>
-      <p>Tutti i codici colore e pattern sono stati estratti dal PDF ufficiale fornito da Orbea. Il risultato finale sarà una replica tecnica perfetta.</p>
+      <p>Il risultato è una bici unica, che fonde la leggerezza della Alma con l’estetica aggressiva e vincente della Oiz più costosa.</p>
     </section>
   </main>
 
   <footer>
-    © 2025 orbea.miniutti.it — Progetto personale non affiliato con Orbea®
+    © 2025 orbea.miniutti.it — progetto indipendente ispirato a Orbea®
   </footer>
 
   <script>
@@ -255,18 +226,7 @@
       });
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
-
-    // Dark mode
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-      localStorage.setItem('mode', document.body.classList.contains('dark') ? 'dark' : 'light');
-    }
-
-    window.onload = () => {
-      if (localStorage.getItem('mode') === 'dark') {
-        document.body.classList.add('dark');
-      }
-    };
   </script>
+
 </body>
 </html>
