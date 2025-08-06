@@ -9,11 +9,14 @@
   <style>
     :root {
       --carbon: #1e1e1e;
-      --golden-sand: #c9a74c;
+      --golden: #c9a74c;
       --anthracite: #7a7a7a;
-      --white: #fefefe;
-      --bg: #f3f3f3;
+      --bg-light: #f5f5f5;
+      --bg-dark: #121212;
+      --white: #ffffff;
       --tricolor: linear-gradient(to right, #008C45, #F4F5F0, #CD212A);
+      --glass: rgba(255, 255, 255, 0.08);
+      --transition: 0.3s ease-in-out;
     }
 
     * {
@@ -22,28 +25,35 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
       font-family: 'Outfit', sans-serif;
-      background: var(--bg);
+      background-color: var(--bg-light);
       color: var(--carbon);
-      overflow-x: hidden;
+      transition: background-color var(--transition), color var(--transition);
+      scroll-behavior: smooth;
+    }
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--white);
     }
 
     header {
-      background-color: var(--carbon);
-      padding: 1rem 2rem;
+      background: var(--carbon);
       color: white;
+      padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
     header h1 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 600;
     }
 
     nav a {
@@ -57,111 +67,136 @@
     nav a::after {
       content: "";
       position: absolute;
-      bottom: -4px;
+      bottom: -5px;
       left: 0;
       width: 0%;
-      height: 3px;
+      height: 2px;
       background: var(--tricolor);
-      transition: width 0.3s ease;
+      transition: width var(--transition);
     }
 
     nav a:hover::after {
       width: 100%;
     }
 
+    .toggle-mode {
+      background: none;
+      border: 2px solid var(--golden);
+      color: var(--golden);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-left: 2rem;
+    }
+
+    .toggle-mode:hover {
+      background: var(--golden);
+      color: black;
+    }
+
     .hero {
-      background: url('https://images.unsplash.com/photo-1607865470261-3c46d1b7f8f7') center/cover no-repeat;
-      height: 80vh;
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1610375293736-c3f4c1bc19e9?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       color: white;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(30, 30, 30, 0.65);
-    }
-
-    .hero-text {
-      position: relative;
-      z-index: 2;
       padding: 2rem;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: var(--golden-sand);
+      font-size: 3.5rem;
+      color: var(--golden);
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      animation: fadeInUp 1.2s ease;
     }
 
     .hero p {
       font-size: 1.2rem;
+      margin-top: 1rem;
       max-width: 700px;
-      margin: 0 auto;
-      color: #e0e0e0;
+      animation: fadeInUp 1.6s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
     }
 
     main {
-      padding: 4rem 2rem;
       max-width: 1100px;
       margin: auto;
+      padding: 4rem 2rem;
     }
 
     .section {
+      margin-bottom: 4rem;
       background: white;
-      padding: 2rem 2.5rem;
       border-radius: 16px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-      margin-bottom: 3rem;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+      transition: var(--transition);
+    }
+
+    body.dark .section {
+      background: #1f1f1f;
     }
 
     .section h3 {
-      font-size: 1.8rem;
-      color: var(--carbon);
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
 
-    .section p {
+    .section p, .section li {
       font-size: 1.1rem;
+      line-height: 1.8;
       color: #444;
-      line-height: 1.7;
-      margin-bottom: 1rem;
+    }
+
+    body.dark .section p, body.dark .section li {
+      color: #ccc;
     }
 
     ul {
       padding-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    ul li {
-      margin-bottom: 0.5rem;
     }
 
     footer {
       background: var(--carbon);
       color: white;
       text-align: center;
-      padding: 1.5rem;
+      padding: 2rem;
+      font-size: 0.95rem;
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.2s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
     }
 
     @media (max-width: 768px) {
-      nav a {
-        margin-left: 1rem;
-      }
-
       .hero h2 {
         font-size: 2.2rem;
       }
-
-      .hero p {
-        font-size: 1rem;
+      nav a {
+        margin-left: 1rem;
+      }
+      .toggle-mode {
+        margin-left: 1rem;
+        margin-top: 0.5rem;
       }
     }
   </style>
@@ -174,36 +209,60 @@
       <a href="index.html">Home</a>
       <a href="progetto.html">Progetto / Documentazione</a>
       <a href="contatti.html">Contatti</a>
+      <button class="toggle-mode" onclick="toggleMode()">🌗</button>
     </nav>
   </header>
 
   <section class="hero">
-    <div class="hero-text">
-      <h2>Progetto Orbea Alma H30</h2>
-      <p>Una rivisitazione esclusiva ispirata alla verniciatura della OIZ M LTD. Sportività, precisione e stile.</p>
-    </div>
+    <h2>Orbea Alma H30 – Progetto Speciale</h2>
+    <p>Un restyling completo ispirato alla top di gamma <strong>OIZ M LTD</strong>, per fondere eleganza, performance e passione in un solo telaio.</p>
   </section>
 
   <main>
-    <section class="section">
+    <section class="section reveal">
       <h3>Obiettivo</h3>
-      <p>Riverniciare il telaio della <strong>Orbea Alma H30</strong> (2022) utilizzando la colorazione della <strong>OIZ M LTD</strong>, mantenendo le grafiche originali (loghi, nome modello, ecc.).</p>
+      <p>Riverniciare il telaio originale della <strong>Orbea Alma H30</strong> (2022), mantenendo grafiche originali e loghi ma utilizzando la stessa combinazione cromatica della <strong>OIZ M LTD</strong>.</p>
     </section>
 
-    <section class="section">
+    <section class="section reveal">
       <h3>Colori e finiture</h3>
       <ul>
-        <li><strong>Carbon Raw</strong> (vernice opaca, colore principale)</li>
-        <li><strong>Metallic Golden Sand</strong> (loghi Orbea)</li>
-        <li><strong>Anthracite Glitter</strong> (dettagli e scritte)</li>
+        <li><strong>Carbon Raw:</strong> base scura opaca</li>
+        <li><strong>Metallic Golden Sand:</strong> loghi principali</li>
+        <li><strong>Anthracite Glitter:</strong> dettagli e nome</li>
       </ul>
-      <p>I codici colore e le grafiche sono stati estratti dal PDF ufficiale di riferimento per la OIZ M LTD.</p>
+      <p>Lo schema è stato realizzato seguendo fedelmente il PDF grafico ufficiale del modello di riferimento.</p>
     </section>
   </main>
 
   <footer>
-    © 2025 Orbea.miniutti.it – Progetto personale non affiliato con Orbea®
+    © 2025 orbea.miniutti.it — progetto indipendente ispirato a Orbea®
   </footer>
 
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(r => observer.observe(r));
+
+    // Dark mode
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('mode', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('mode') === 'dark') {
+        document.body.classList.add('dark');
+      }
+    };
+  </script>
 </body>
 </html>
