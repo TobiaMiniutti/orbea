@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orbea Alma H30 – Home</title>
+  <title>Orbea Alma H30 – Progetto</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --carbon-raw: #1e1e1e;
+      --carbon: #1e1e1e;
       --golden-sand: #c9a74c;
-      --anthracite-glitter: #777;
-      --background: #f7f7f7;
+      --anthracite: #7a7a7a;
+      --white: #fefefe;
+      --bg: #f3f3f3;
       --tricolor: linear-gradient(to right, #008C45, #F4F5F0, #CD212A);
     }
 
@@ -23,27 +24,26 @@
 
     body {
       font-family: 'Outfit', sans-serif;
-      background-color: var(--background);
-      color: var(--carbon-raw);
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--carbon);
+      overflow-x: hidden;
     }
 
     header {
-      background: var(--carbon-raw);
+      background-color: var(--carbon);
+      padding: 1rem 2rem;
       color: white;
-      padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      z-index: 10;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.4);
     }
 
     header h1 {
-      font-size: 1.4rem;
-      font-weight: 600;
+      font-size: 1.5rem;
     }
 
     nav a {
@@ -52,7 +52,6 @@
       margin-left: 2rem;
       position: relative;
       font-weight: 500;
-      transition: 0.3s ease;
     }
 
     nav a::after {
@@ -60,8 +59,8 @@
       position: absolute;
       bottom: -4px;
       left: 0;
-      height: 3px;
       width: 0%;
+      height: 3px;
       background: var(--tricolor);
       transition: width 0.3s ease;
     }
@@ -70,44 +69,86 @@
       width: 100%;
     }
 
-    main {
-      max-width: 960px;
-      margin: auto;
-      padding: 3rem 2rem;
+    .hero {
+      background: url('https://images.unsplash.com/photo-1607865470261-3c46d1b7f8f7') center/cover no-repeat;
+      height: 80vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
     }
 
-    .hero {
-      text-align: center;
-      margin-bottom: 3rem;
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(30, 30, 30, 0.65);
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
     }
 
     .hero h2 {
-      font-size: 2.8rem;
-      color: var(--carbon-raw);
+      font-size: 3rem;
       margin-bottom: 1rem;
+      color: var(--golden-sand);
     }
 
     .hero p {
-      font-size: 1.25rem;
-      color: var(--anthracite-glitter);
+      font-size: 1.2rem;
       max-width: 700px;
       margin: 0 auto;
+      color: #e0e0e0;
     }
 
-    .content {
+    main {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section {
       background: white;
-      padding: 2rem;
+      padding: 2rem 2.5rem;
       border-radius: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      margin-bottom: 3rem;
     }
 
-    .content p {
-      font-size: 1.1rem;
+    .section h3 {
+      font-size: 1.8rem;
+      color: var(--carbon);
       margin-bottom: 1rem;
     }
 
-    .content strong {
-      color: var(--carbon-raw);
+    .section p {
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background: var(--carbon);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
     }
 
     @media (max-width: 768px) {
@@ -116,20 +157,11 @@
       }
 
       .hero h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
 
       .hero p {
-        font-size: 1.05rem;
-      }
-
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        margin-top: 1rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -145,23 +177,33 @@
     </nav>
   </header>
 
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Progetto Orbea Alma H30</h2>
+      <p>Una rivisitazione esclusiva ispirata alla verniciatura della OIZ M LTD. Sportività, precisione e stile.</p>
+    </div>
+  </section>
+
   <main>
-    <section class="hero">
-      <h2>Orbea Alma H30 (2022) – PROGETTO</h2>
-      <p>Un restyling estetico ispirato alla top di gamma OIZ M LTD, per un look esclusivo che fonde sportività, tecnica e identità.</p>
+    <section class="section">
+      <h3>Obiettivo</h3>
+      <p>Riverniciare il telaio della <strong>Orbea Alma H30</strong> (2022) utilizzando la colorazione della <strong>OIZ M LTD</strong>, mantenendo le grafiche originali (loghi, nome modello, ecc.).</p>
     </section>
 
-    <section class="content">
-      <p><strong>Obiettivo:</strong> Riverniciare il telaio della <strong>Orbea Alma H30</strong>, mantenendo le grafiche originali (loghi, nome modello, ecc.) ma adottando la verniciatura ufficiale della <strong>OIZ M LTD</strong>.</p>
-      <p>I colori saranno:</p>
+    <section class="section">
+      <h3>Colori e finiture</h3>
       <ul>
-        <li><strong>Base:</strong> Carbon Raw (vernice opaca)</li>
-        <li><strong>Loghi principali:</strong> Metallic Golden Sand</li>
-        <li><strong>Dettagli e nome:</strong> Anthracite Glitter</li>
+        <li><strong>Carbon Raw</strong> (vernice opaca, colore principale)</li>
+        <li><strong>Metallic Golden Sand</strong> (loghi Orbea)</li>
+        <li><strong>Anthracite Glitter</strong> (dettagli e scritte)</li>
       </ul>
-      <p>Il design segue fedelmente lo schema presente nel PDF ufficiale con codici colore, pattern e riferimenti tecnici precisi.</p>
+      <p>I codici colore e le grafiche sono stati estratti dal PDF ufficiale di riferimento per la OIZ M LTD.</p>
     </section>
   </main>
+
+  <footer>
+    © 2025 Orbea.miniutti.it – Progetto personale non affiliato con Orbea®
+  </footer>
 
 </body>
 </html>
