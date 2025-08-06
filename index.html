@@ -13,9 +13,8 @@
       --anthracite: #7a7a7a;
       --bg-light: #f5f5f5;
       --bg-dark: #121212;
-      --white: #ffffff;
+      --glass: rgba(255, 255, 255, 0.06);
       --tricolor: linear-gradient(to right, #008C45, #F4F5F0, #CD212A);
-      --glass: rgba(255, 255, 255, 0.08);
       --transition: 0.3s ease-in-out;
     }
 
@@ -35,12 +34,12 @@
 
     body.dark {
       background-color: var(--bg-dark);
-      color: var(--white);
+      color: white;
     }
 
     header {
-      background: var(--carbon);
-      color: white;
+      backdrop-filter: blur(8px);
+      background: var(--glass);
       padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -48,12 +47,16 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     }
 
-    header h1 {
-      font-size: 1.4rem;
-      font-weight: 600;
+    .logo {
+      height: 38px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
     }
 
     nav a {
@@ -80,6 +83,7 @@
     }
 
     .toggle-mode {
+      margin-left: 2rem;
       background: none;
       border: 2px solid var(--golden);
       color: var(--golden);
@@ -88,7 +92,6 @@
       font-weight: bold;
       cursor: pointer;
       transition: var(--transition);
-      margin-left: 2rem;
     }
 
     .toggle-mode:hover {
@@ -98,8 +101,7 @@
 
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1610375293736-c3f4c1bc19e9?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      color: white;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1607865470261-3c46d1b7f8f7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -108,24 +110,30 @@
       padding: 2rem;
       position: relative;
       overflow: hidden;
+      animation: fadeIn 1.5s ease;
     }
 
     .hero h2 {
       font-size: 3.5rem;
       color: var(--golden);
       text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-      animation: fadeInUp 1.2s ease;
+      animation: fadeUp 1.2s ease;
     }
 
     .hero p {
       font-size: 1.2rem;
-      margin-top: 1rem;
       max-width: 700px;
-      animation: fadeInUp 1.6s ease;
+      color: #e0e0e0;
+      margin-top: 1rem;
+      animation: fadeUp 1.6s ease;
     }
 
-    @keyframes fadeInUp {
-      from {opacity: 0; transform: translateY(20px);}
+    @keyframes fadeIn {
+      from {opacity: 0;} to {opacity: 1;}
+    }
+
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(30px);}
       to {opacity: 1; transform: translateY(0);}
     }
 
@@ -138,19 +146,19 @@
     .section {
       margin-bottom: 4rem;
       background: white;
-      border-radius: 16px;
-      padding: 2rem 2.5rem;
-      box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
       transition: var(--transition);
     }
 
     body.dark .section {
-      background: #1f1f1f;
+      background: #1e1e1e;
     }
 
     .section h3 {
       font-size: 2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
     .section p, .section li {
@@ -173,9 +181,9 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.95rem;
+      margin-top: 4rem;
     }
 
-    /* Reveal on scroll */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
@@ -191,12 +199,9 @@
       .hero h2 {
         font-size: 2.2rem;
       }
-      nav a {
+
+      nav a, .toggle-mode {
         margin-left: 1rem;
-      }
-      .toggle-mode {
-        margin-left: 1rem;
-        margin-top: 0.5rem;
       }
     }
   </style>
@@ -204,39 +209,39 @@
 <body>
 
   <header>
-    <h1>orbea.miniutti.it</h1>
+    <img src="favicon.png" alt="Logo Orbea Project" class="logo" />
     <nav>
       <a href="index.html">Home</a>
       <a href="progetto.html">Progetto / Documentazione</a>
       <a href="contatti.html">Contatti</a>
-      <button class="toggle-mode" onclick="toggleMode()">🌗</button>
+      <button class="toggle-mode" onclick="toggleMode()">🌙</button>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Orbea Alma H30 – Progetto Speciale</h2>
-    <p>Un restyling completo ispirato alla top di gamma <strong>OIZ M LTD</strong>, per fondere eleganza, performance e passione in un solo telaio.</p>
+    <h2>Orbea Alma H30 – Edizione Esclusiva</h2>
+    <p>Rivoluziona l'estetica della tua Alma con il look ufficiale della OIZ M LTD: colori racing, dettagli unici, pura eleganza tecnica.</p>
   </section>
 
   <main>
     <section class="section reveal">
       <h3>Obiettivo</h3>
-      <p>Riverniciare il telaio originale della <strong>Orbea Alma H30</strong> (2022), mantenendo grafiche originali e loghi ma utilizzando la stessa combinazione cromatica della <strong>OIZ M LTD</strong>.</p>
+      <p>Riverniciare completamente la <strong>Orbea Alma H30</strong> (2022) mantenendo le grafiche originali, ma adottando fedelmente la livrea della <strong>OIZ M LTD</strong> – la bici campione del mondo.</p>
     </section>
 
     <section class="section reveal">
-      <h3>Colori e finiture</h3>
+      <h3>Colori e dettagli</h3>
       <ul>
-        <li><strong>Carbon Raw:</strong> base scura opaca</li>
-        <li><strong>Metallic Golden Sand:</strong> loghi principali</li>
-        <li><strong>Anthracite Glitter:</strong> dettagli e nome</li>
+        <li><strong>Carbon Raw:</strong> base opaca strutturata</li>
+        <li><strong>Metallic Golden Sand:</strong> loghi Orbea principali</li>
+        <li><strong>Anthracite Glitter:</strong> dettagli secondari e nome</li>
       </ul>
-      <p>Lo schema è stato realizzato seguendo fedelmente il PDF grafico ufficiale del modello di riferimento.</p>
+      <p>Tutti i codici colore e pattern sono stati estratti dal PDF ufficiale fornito da Orbea. Il risultato finale sarà una replica tecnica perfetta.</p>
     </section>
   </main>
 
   <footer>
-    © 2025 orbea.miniutti.it — progetto indipendente ispirato a Orbea®
+    © 2025 orbea.miniutti.it — Progetto personale non affiliato con Orbea®
   </footer>
 
   <script>
@@ -249,8 +254,7 @@
         }
       });
     }, { threshold: 0.1 });
-
-    reveals.forEach(r => observer.observe(r));
+    reveals.forEach(el => observer.observe(el));
 
     // Dark mode
     function toggleMode() {
