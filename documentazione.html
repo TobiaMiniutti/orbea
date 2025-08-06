@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Documentazione – Orbea Alma H30</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Stesso CSS della home (puoi estrarlo in un file separato per manutenzione) */
+    :root {
+      --carbon: #121212;
+      --carbon-deep: #0d0d0d;
+      --golden: #c9a74c;
+      --anthracite: #8f8f8f;
+      --white: #ffffff;
+      --glass: rgba(255, 255, 255, 0.05);
+      --tricolor: linear-gradient(to right, #008C45, #F4F5F0, #CD212A);
+      --transition: 0.3s ease-in-out;
+    }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    html, body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--carbon);
+      color: var(--white);
+      scroll-behavior: smooth;
+      transition: background-color var(--transition), color var(--transition);
+    }
+    header {
+      backdrop-filter: blur(10px);
+      background: var(--glass);
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.7);
+    }
+    .logo {
+      height: 38px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin-left: 2rem;
+      position: relative;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--tricolor);
+      transition: width var(--transition);
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 4rem 2rem;
+    }
+    .section {
+      background: var(--carbon-deep);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.4);
+      margin-bottom: 4rem;
+      backdrop-filter: blur(6px);
+      transition: var(--transition);
+    }
+    .section h3 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: var(--white);
+    }
+    .section p, .section li {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--anthracite);
+    }
+    ul {
+      padding-left: 1.5rem;
+    }
+    footer {
+      background: var(--carbon-deep);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    @media (max-width: 768px) {
+      nav a {
+        margin-left: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="favicon.png" alt="Logo Orbea Project" class="logo" />
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="documentazione.html" aria-current="page">Documentazione</a>
+    <a href="contatti.html">Contatti</a>
+  </nav>
+</header>
+
+<main>
+  <section class="section">
+    <h3>Documentazione Tecnica</h3>
+    <p>Qui trovi tutte le informazioni dettagliate sul progetto Orbea Alma H30, inclusi dati tecnici, riferimenti e documenti di supporto.</p>
+  </section>
+
+  <section class="section">
+    <h3>PDF di riferimento</h3>
+    <p>Scarica il PDF tecnico ufficiale usato come base per la trasformazione:</p>
+    <ul>
+      <li><a href="pdfs/oiz-m-ltd-tecnico.pdf" style="color: var(--golden);" target="_blank" rel="noopener">OIZ M LTD – Specifiche Tecniche (PDF)</a></li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h3>Note di progetto</h3>
+    <ul>
+      <li>Mantenimento delle grafiche originali Alma 2022</li>
+      <li>Adozione del colore ufficiale e dettagli OIZ M LTD</li>
+      <li>Focus su leggerezza e resa estetica</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  © 2025 orbea.miniutti.it — progetto indipendente ispirato a Orbea®
+</footer>
+
+</body>
+</html>
