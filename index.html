@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbea Alma H30 – Home</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f4f4;
+      color: #1a1a1a;
+    }
+
+    header {
+      background: #222;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: #ff4500;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      padding: 3rem 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 1rem;
+      }
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div><strong>orbea.miniutti.it</strong></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="progetto.html">Progetto / Documentazione</a>
+      <a href="contatti.html">Contatti</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Orbea Alma H30 (2022) – PROGETTO</h1>
+    <p><strong>Obiettivo:</strong> Riverniciare il telaio della <strong>Orbea Alma H30</strong> mantenendo le grafiche principali originali (loghi, nome modello, ecc.), adottando però la <strong>verniciatura e i colori della OIZ M LTD</strong>.</p>
+    <p>Il progetto è stato realizzato sulla base del PDF ufficiale contenente:<br>
+    – Schema grafico<br>
+    – Nomi e pattern delle vernici impiegate<br>
+    – Dettagli tecnici della colorazione</p>
+  </main>
+
+</body>
+</html>
