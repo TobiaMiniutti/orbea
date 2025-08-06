@@ -3,77 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orbea Alma H30 – Progetto</title>
+  <title>Orbea Alma H30 – Home</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --accent: #ff3c00;
-      --bg: #f9f9f9;
-      --text: #1b1b1b;
+      --carbon-raw: #1e1e1e;
+      --golden-sand: #c9a74c;
+      --anthracite-glitter: #777;
+      --background: #f7f7f7;
       --tricolor: linear-gradient(to right, #008C45, #F4F5F0, #CD212A);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: 'Outfit', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background-color: var(--background);
+      color: var(--carbon-raw);
       line-height: 1.6;
     }
 
     header {
-      position: sticky;
-      top: 0;
-      background: #111;
-      padding: 1rem 2rem;
+      background: var(--carbon-raw);
+      color: white;
+      padding: 1.2rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
     }
 
     header h1 {
-      color: white;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 600;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       margin-left: 2rem;
-      font-weight: 500;
       position: relative;
-      padding-bottom: 4px;
+      font-weight: 500;
       transition: 0.3s ease;
     }
 
-    nav a:hover::after {
+    nav a::after {
       content: "";
       position: absolute;
+      bottom: -4px;
       left: 0;
-      bottom: 0;
-      width: 100%;
       height: 3px;
+      width: 0%;
       background: var(--tricolor);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     main {
-      max-width: 1000px;
+      max-width: 960px;
       margin: auto;
-      padding: 4rem 2rem;
-      animation: fadeIn 1.5s ease-out;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(20px);}
-      to {opacity: 1; transform: translateY(0);}
+      padding: 3rem 2rem;
     }
 
     .hero {
@@ -83,27 +83,31 @@
 
     .hero h2 {
       font-size: 2.8rem;
-      color: #000;
+      color: var(--carbon-raw);
       margin-bottom: 1rem;
     }
 
     .hero p {
-      font-size: 1.2rem;
-      color: #444;
+      font-size: 1.25rem;
+      color: var(--anthracite-glitter);
       max-width: 700px;
       margin: 0 auto;
     }
 
-    .section {
+    .content {
       background: white;
       padding: 2rem;
       border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     }
 
-    .section p {
-      margin-bottom: 1rem;
+    .content p {
       font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .content strong {
+      color: var(--carbon-raw);
     }
 
     @media (max-width: 768px) {
@@ -112,11 +116,20 @@
       }
 
       .hero h2 {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
 
-      .section {
-        padding: 1.5rem;
+      .hero p {
+        font-size: 1.05rem;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 1rem;
       }
     }
   </style>
@@ -135,16 +148,18 @@
   <main>
     <section class="hero">
       <h2>Orbea Alma H30 (2022) – PROGETTO</h2>
-      <p>Restyling unico della tua mountain bike con la colorazione esclusiva della OIZ M LTD. Un progetto personale tra design, tecnica e passione.</p>
+      <p>Un restyling estetico ispirato alla top di gamma OIZ M LTD, per un look esclusivo che fonde sportività, tecnica e identità.</p>
     </section>
 
-    <section class="section">
-      <p><strong>Obiettivo:</strong> Riverniciare il telaio della <strong>Orbea Alma H30</strong> con gli stessi colori e pattern della <strong>OIZ M LTD</strong>, come indicato nel PDF ufficiale.</p>
-      <p>Le <strong>grafiche originali</strong> della Alma (loghi, nome modello, ecc.) verranno mantenute, mentre la nuova verniciatura seguirà fedelmente lo schema dell’alta gamma LTD.</p>
-      <p>Il PDF contiene riferimenti precisi a:<br>
-      – Codici colore ufficiali<br>
-      – Pattern grafici<br>
-      – Materiali e finiture</p>
+    <section class="content">
+      <p><strong>Obiettivo:</strong> Riverniciare il telaio della <strong>Orbea Alma H30</strong>, mantenendo le grafiche originali (loghi, nome modello, ecc.) ma adottando la verniciatura ufficiale della <strong>OIZ M LTD</strong>.</p>
+      <p>I colori saranno:</p>
+      <ul>
+        <li><strong>Base:</strong> Carbon Raw (vernice opaca)</li>
+        <li><strong>Loghi principali:</strong> Metallic Golden Sand</li>
+        <li><strong>Dettagli e nome:</strong> Anthracite Glitter</li>
+      </ul>
+      <p>Il design segue fedelmente lo schema presente nel PDF ufficiale con codici colore, pattern e riferimenti tecnici precisi.</p>
     </section>
   </main>
 
