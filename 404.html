@@ -1,89 +1,97 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>404 – Pagina non trovata</title>
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --carbon: #121212;
-      --golden: #c9a74c;
-      --anthracite: #8f8f8f;
-      --white: #ffffff;
-      --transition: 0.6s ease;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html, body {
-      font-family:'Outfit',sans-serif;
-      height:100%;
-      background-color:var(--carbon);
-      color:var(--white);
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      animation: fadeIn var(--transition);
-    }
-    @keyframes fadeIn {
-      from { opacity:0; transform: translateY(20px); }
-      to { opacity:1; transform: translateY(0); }
-    }
-    .logo {
-      position:absolute;
-      top:20px;
-      left:20px;
-      height:40px;
-      opacity:0.8;
-    }
-    svg {
-      width:180px;
-      margin-bottom:2rem;
-    }
-    .wheel, .pedal {
-      animation: rotate 2s linear infinite;
-      transform-origin: center;
-    }
-    @keyframes rotate {
-      to { transform: rotate(360deg); }
-    }
-    h1 { font-size:5rem; color:var(--golden); margin-bottom:0.5rem; }
-    p { font-size:1.3rem; color:var(--anthracite); margin-bottom:2rem; max-width:600px; }
-    a.button {
-      background:var(--golden);
-      color:var(--carbon);
-      padding:0.8rem 1.6rem;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:600;
-      transition: background var(--transition);
-    }
-    a.button:hover { background:var(--white); }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>404 – Pagina non trovata</title>
+<link rel="icon" href="favicon.png" type="image/png" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --carbon: #121212;
+    --golden: #c9a74c;
+    --anthracite: #8f8f8f;
+    --white: #ffffff;
+    --transition: 0.6s ease;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    height: 100%; 
+    background: var(--carbon); 
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+  }
+  body {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 3rem 1rem;
+    animation: fadeIn var(--transition);
+  }
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);} 
+    to {opacity: 1; transform: translateY(0);}
+  }
+  .logo {
+    position: absolute; top: 20px; left: 20px;
+    height: 40px; opacity: 0.8;
+  }
+  svg {
+    width: 180px; margin-bottom: 2rem;
+  }
+  .wheel, .pedal-arm {
+    animation: rotate 2.5s linear infinite;
+    transform-origin: center;
+  }
+  /* Pedali e bracci pedali */
+  .pedal-arm {
+    transform-origin: 50% 50%;
+  }
+  .pedal-arm:nth-child(2) {
+    animation-delay: 1.25s; /* pedale opposto */
+  }
+  @keyframes rotate {
+    to { transform: rotate(360deg); }
+  }
+  h1 { font-size: 5rem; color: var(--golden); margin-bottom: 0.5rem; }
+  p { font-size: 1.3rem; color: var(--anthracite); margin-bottom: 2rem; max-width: 600px; }
+  a.button {
+    background: var(--golden); color: var(--carbon);
+    padding: 0.8rem 1.6rem; border-radius: 8px;
+    text-decoration: none; font-weight: 600;
+    transition: background var(--transition);
+  }
+  a.button:hover { background: var(--white); }
+</style>
 </head>
 <body>
 
-  <img src="favicon.png" alt="Logo" class="logo" />
+<img src="favicon.png" alt="Logo" class="logo" />
 
-  <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-    <!-- Ruote -->
-    <circle class="wheel" cx="25" cy="45" r="10" stroke="#c9a74c" stroke-width="3" fill="none"/>
-    <circle class="wheel" cx="75" cy="45" r="10" stroke="#c9a74c" stroke-width="3" fill="none"/>
-    <!-- Pedali e catena stilizzati -->
-    <g class="pedal">
-      <rect x="47" y="42" width="6" height="4" fill="#c9a74c"/>
+<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-label="Animazione bici">
+  <!-- Ruote -->
+  <circle class="wheel" cx="25" cy="45" r="10" stroke="#c9a74c" stroke-width="3" fill="none"/>
+  <circle class="wheel" cx="75" cy="45" r="10" stroke="#c9a74c" stroke-width="3" fill="none"/>
+
+  <!-- Telaio -->
+  <line x1="25" y1="45" x2="50" y2="30" stroke="#c9a74c" stroke-width="3"/>
+  <line x1="50" y1="30" x2="75" y2="45" stroke="#c9a74c" stroke-width="3"/>
+
+  <!-- Pedali con bracci e pedali -->
+  <g transform="translate(50 45)">
+    <g class="pedal-arm" style="transform-origin: 0 0;">
+      <line x1="0" y1="0" x2="10" y2="0" stroke="#c9a74c" stroke-width="3" />
+      <rect x="10" y="-3" width="6" height="6" fill="#c9a74c" />
     </g>
-    <line x1="25" y1="45" x2="50" y2="30" stroke="#c9a74c" stroke-width="3"/>
-    <line x1="50" y1="30" x2="75" y2="45" stroke="#c9a74c" stroke-width="3"/>
-  </svg>
+    <g class="pedal-arm" style="transform-origin: 0 0; animation-delay: 1.25s;">
+      <line x1="0" y1="0" x2="-10" y2="0" stroke="#c9a74c" stroke-width="3" />
+      <rect x="-16" y="-3" width="6" height="6" fill="#c9a74c" />
+    </g>
+  </g>
+</svg>
 
-  <div>
-    <h1>404</h1>
-    <p>La pagina che cerchi non esiste o è stata spostata.</p>
-    <a class="button" href="index.html">Torna alla Home</a>
-  </div>
+<h1>404</h1>
+<p>La pagina che cerchi non esiste o è stata spostata.</p>
+<a class="button" href="index.html">Torna alla Home</a>
 
 </body>
 </html>
