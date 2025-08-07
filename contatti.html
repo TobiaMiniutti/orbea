@@ -1,1 +1,138 @@
-in lavorazione
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contatti – Orbea Alma H30</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --carbon: #121212;
+      --carbon-deep: #0d0d0d;
+      --golden: #c9a74c;
+      --anthracite: #8f8f8f;
+      --white: #ffffff;
+      --glass: rgba(255, 255, 255, 0.05);
+      --tricolor: linear-gradient(to right, #008C45, #F4F5F0, #CD212A);
+      --transition: 0.3s ease-in-out;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--carbon);
+      color: var(--white);
+      scroll-behavior: smooth;
+    }
+    header {
+      backdrop-filter: blur(10px);
+      background: var(--glass);
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.7);
+    }
+    .logo { height: 38px; }
+    nav {
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      color: var(--white);
+      text-decoration: none;
+      margin-left: 2rem;
+      position: relative;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--tricolor);
+      transition: width var(--transition);
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 4rem 2rem;
+    }
+    .section {
+      background: var(--carbon-deep);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.4);
+      margin-bottom: 4rem;
+      backdrop-filter: blur(6px);
+    }
+    .section h3 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: var(--white);
+    }
+    .section p, .section li, .section a {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--anthracite);
+    }
+    .section a {
+      color: var(--golden);
+      text-decoration: none;
+    }
+    .section a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      background: var(--carbon-deep);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    @media (max-width: 768px) {
+      nav a { margin-left: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="favicon.png" alt="Logo Orbea Project" class="logo" />
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="documentazione.html">Documentazione</a>
+    <a href="contatti.html" aria-current="page">Contatti</a>
+  </nav>
+</header>
+
+<main>
+  <section class="section">
+    <h3>Contatti</h3>
+    <p>Per domande, suggerimenti o richieste relative al progetto Orbea Alma H30, puoi contattarmi tramite:</p>
+    <ul>
+      <li><strong>Email personale:</strong> <a href="mailto:tobia@miniutti.it">tobia@miniutti.it</a></li>
+      <li><strong>Email aziendale:</strong> <a href="mailto:info@miniutti.it">info@miniutti.it</a></li>
+      <li><strong>Telefono:</strong> <a href="tel:+393791128232">+39 379 112 8232</a></li>
+    </ul>
+    <p>Rispondo preferibilmente via email, entro 24 ore.</p>
+  </section>
+</main>
+
+<footer>
+  © 2025 miniutti.it — progetto indipendente ispirato a Orbea®
+</footer>
+
+</body>
+</html>
