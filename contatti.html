@@ -49,39 +49,31 @@
     height: 38px;
   }
 
-  nav {
-    display: flex;
-    align-items: center;
-  }
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+}
 
-  nav a {
-    position: relative;
-    color: var(--white);
-    text-decoration: none;
-    margin-left: 2rem;
-    font-weight: 500;
-    padding-bottom: 4px;
-    transition: var(--transition);
-  }
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #0080ff 33%, #ffffff 33%, #ffffff 66%, #ff2a2a 66%);
+  background-size: 100% 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease-in-out;
+}
 
-  nav a::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: var(--tricolor);
-    transition: width var(--transition);
-  }
+nav a:hover::after {
+  transform: scaleX(1);
+}
 
-  nav a:hover::after {
-    width: 100%;
-  }
-
-  nav a[aria-current="page"]::after {
-    width: 0; /* Nessuna linea permanente */
-  }
 
   main {
     max-width: 700px;
