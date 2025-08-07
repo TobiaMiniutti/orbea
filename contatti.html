@@ -139,6 +139,63 @@
       margin-top: 1rem;
       display: none;
     }
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #ddd;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #0075ff;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
   </style>
 </head>
 <body>
@@ -172,6 +229,13 @@
       <input type="email" id="email" name="email" required placeholder="La tua email" />
       <label for="message">Messaggio</label>
       <textarea id="message" name="message" rows="5" required placeholder="Il tuo messaggio"></textarea>
+      <div class="form-group">
+        <label class="checkbox-container">
+        <input type="checkbox" name="newsletter" value="Sì">
+        <span class="checkmark"></span>
+        Desidero iscrivermi alla newsletter
+        </label>
+      </div>
       <button type="submit">Invia</button>
       <p class="success-message" id="successMessage">Messaggio inviato con successo!</p>
     </form>
