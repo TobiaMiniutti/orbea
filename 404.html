@@ -14,79 +14,59 @@
       --anthracite: #8f8f8f;
       --white: #ffffff;
       --glass: rgba(255, 255, 255, 0.05);
-      --tricolor: linear-gradient(to right, #008C45, #F4F5F0, #CD212A);
-      --transition: 0.3s ease-in-out;
+      --transition: 0.6s ease;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     html, body {
       font-family: 'Outfit', sans-serif;
       background-color: var(--carbon);
       color: var(--white);
       height: 100%;
-    }
-    header {
-      backdrop-filter: blur(10px);
-      background: var(--glass);
-      padding: 1.2rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.7);
-    }
-    .logo { height: 38px; }
-    nav {
-      display: flex;
-      align-items: center;
-    }
-    nav a {
-      color: var(--white);
-      text-decoration: none;
-      margin-left: 2rem;
-      position: relative;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: var(--tricolor);
-      transition: width var(--transition);
-    }
-    nav a:hover::after {
-      width: 100%;
+      overflow: hidden;
     }
 
-    .container {
+    body {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 5rem 2rem 3rem;
-      min-height: calc(100vh - 180px);
+      padding: 3rem 1.5rem;
+      animation: fadeIn var(--transition);
     }
 
-    .bike-animation {
-      width: 180px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      height: 40px;
+      opacity: 0.85;
+    }
+
+    svg {
+      width: 160px;
       margin-bottom: 2rem;
-      animation: moveBike 2.5s infinite linear;
+      animation: pedal 2s linear infinite;
     }
 
-    @keyframes moveBike {
-      0% { transform: translateX(-5px); }
-      50% { transform: translateX(5px); }
-      100% { transform: translateX(-5px); }
+    @keyframes pedal {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     h1 {
-      font-size: 6rem;
+      font-size: 5rem;
       color: var(--golden);
       margin-bottom: 0.5rem;
     }
@@ -94,72 +74,41 @@
     p {
       font-size: 1.3rem;
       color: var(--anthracite);
+      margin-bottom: 2rem;
       max-width: 600px;
-      margin-bottom: 2.5rem;
     }
 
-    .button {
+    a.button {
       background: var(--golden);
       color: var(--carbon);
       padding: 0.8rem 1.6rem;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
-      transition: var(--transition);
+      transition: background var(--transition);
     }
 
-    .button:hover {
+    a.button:hover {
       background: var(--white);
-    }
-
-    footer {
-      background: var(--carbon-deep);
-      color: var(--white);
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.5px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    @media (max-width: 768px) {
-      nav a { margin-left: 1rem; }
-      h1 { font-size: 4rem; }
-      p { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="favicon.png" alt="Logo Orbea Project" class="logo" />
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="documentazione.html">Documentazione</a>
-    <a href="contatti.html">Contatti</a>
-  </nav>
-</header>
+<img src="favicon.png" alt="Logo" class="logo" />
 
-<main class="container">
-  <svg class="bike-animation" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="16" cy="48" r="8" stroke="#c9a74c" stroke-width="3"/>
-    <circle cx="48" cy="48" r="8" stroke="#c9a74c" stroke-width="3"/>
-    <path d="M16 48 L24 32 L32 48" stroke="#c9a74c" stroke-width="3" fill="none"/>
-    <path d="M24 32 L40 32 L48 48" stroke="#c9a74c" stroke-width="3" fill="none"/>
-    <circle cx="24" cy="32" r="2" fill="#c9a74c"/>
-    <circle cx="40" cy="32" r="2" fill="#c9a74c"/>
-    <path d="M24 32 L32 16" stroke="#c9a74c" stroke-width="3"/>
-    <path d="M32 16 L40 32" stroke="#c9a74c" stroke-width="3"/>
-  </svg>
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="16" cy="48" r="8" stroke="#c9a74c" stroke-width="3"/>
+  <circle cx="48" cy="48" r="8" stroke="#c9a74c" stroke-width="3"/>
+  <path d="M16 48 L24 32 L48 48" stroke="#c9a74c" stroke-width="3" fill="none"/>
+  <path d="M24 32 L34 32 L38 20" stroke="#c9a74c" stroke-width="3" fill="none"/>
+  <path d="M38 20 L28 20" stroke="#c9a74c" stroke-width="3" fill="none"/>
+  <path d="M28 20 L24 32" stroke="#c9a74c" stroke-width="3" fill="none"/>
+</svg>
 
-  <h1>404</h1>
-  <p>La pagina che cerchi non esiste o è stata spostata. Controlla l’indirizzo o torna alla home.</p>
-  <a class="button" href="index.html">Torna alla Home</a>
-</main>
-
-<footer>
-  © 2025 miniutti.it — progetto indipendente ispirato a Orbea®
-</footer>
+<h1>404</h1>
+<p>La pagina che cerchi non esiste.<br>È possibile che sia stata rimossa o spostata.</p>
+<a class="button" href="index.html">Torna alla Home</a>
 
 </body>
 </html>
