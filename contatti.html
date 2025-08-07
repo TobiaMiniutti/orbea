@@ -41,6 +41,7 @@
       display: flex;
       align-items: center;
     }
+
     nav a {
       color: var(--white);
       text-decoration: none;
@@ -49,6 +50,7 @@
       font-weight: 500;
       transition: var(--transition);
     }
+
     nav a::after {
       content: "";
       position: absolute;
@@ -59,8 +61,8 @@
       background: var(--tricolor);
       transition: width var(--transition);
     }
-    nav a:hover::after,
-    nav a[aria-current="page"]::after {
+
+    nav a:hover::after {
       width: 100%;
     }
     main {
