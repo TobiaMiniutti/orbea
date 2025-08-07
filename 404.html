@@ -14,84 +14,96 @@
     --white: #ffffff;
     --transition: 0.6s ease;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
   html, body {
-    height: 100%; 
-    background: var(--carbon); 
-    color: var(--white);
+    height: 100%;
+    background-color: var(--carbon);
+    color: var(--golden);
     font-family: 'Outfit', sans-serif;
   }
   body {
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    text-align: center; padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1.5rem;
     animation: fadeIn var(--transition);
+    position: relative;
   }
   @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);} 
-    to {opacity: 1; transform: translateY(0);}
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   .logo {
-    position: absolute; top: 20px; left: 20px;
-    height: 40px; opacity: 0.8;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    height: 40px;
+    opacity: 0.8;
   }
-  svg {
-    width: 180px; margin-bottom: 2rem;
+  h1 {
+    font-size: 10rem;
+    display: flex;
+    gap: 1rem;
   }
-  .wheel, .pedal-arm {
-    animation: rotate 2.5s linear infinite;
-    transform-origin: center;
+  .digit {
+    animation: bounce 1.5s infinite alternate ease-in-out;
   }
-  /* Pedali e bracci pedali */
-  .pedal-arm {
-    transform-origin: 50% 50%;
+  .digit:nth-child(1) {
+    animation-delay: 0s;
   }
-  .pedal-arm:nth-child(2) {
-    animation-delay: 1.25s; /* pedale opposto */
+  .digit:nth-child(3) {
+    animation-delay: 0.3s;
   }
-  @keyframes rotate {
-    to { transform: rotate(360deg); }
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-20px);
+    }
   }
-  h1 { font-size: 5rem; color: var(--golden); margin-bottom: 0.5rem; }
-  p { font-size: 1.3rem; color: var(--anthracite); margin-bottom: 2rem; max-width: 600px; }
-  a.button {
-    background: var(--golden); color: var(--carbon);
-    padding: 0.8rem 1.6rem; border-radius: 8px;
-    text-decoration: none; font-weight: 600;
-    transition: background var(--transition);
+  p {
+    font-size: 1.5rem;
+    color: var(--anthracite);
+    margin: 2rem 0;
+    max-width: 600px;
   }
-  a.button:hover { background: var(--white); }
+  a {
+    text-decoration: none;
+    color: var(--carbon);
+    background: var(--golden);
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  a:hover {
+    background: #e6ca6d;
+  }
 </style>
 </head>
 <body>
 
 <img src="favicon.png" alt="Logo" class="logo" />
 
-<svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-label="Animazione bici">
-  <!-- Ruote -->
-  <circle class="wheel" cx="25" cy="45" r="10" stroke="#c9a74c" stroke-width="3" fill="none"/>
-  <circle class="wheel" cx="75" cy="45" r="10" stroke="#c9a74c" stroke-width="3" fill="none"/>
+<h1>
+  <span class="digit">4</span>
+  <span class="digit">0</span>
+  <span class="digit">4</span>
+</h1>
 
-  <!-- Telaio -->
-  <line x1="25" y1="45" x2="50" y2="30" stroke="#c9a74c" stroke-width="3"/>
-  <line x1="50" y1="30" x2="75" y2="45" stroke="#c9a74c" stroke-width="3"/>
-
-  <!-- Pedali con bracci e pedali -->
-  <g transform="translate(50 45)">
-    <g class="pedal-arm" style="transform-origin: 0 0;">
-      <line x1="0" y1="0" x2="10" y2="0" stroke="#c9a74c" stroke-width="3" />
-      <rect x="10" y="-3" width="6" height="6" fill="#c9a74c" />
-    </g>
-    <g class="pedal-arm" style="transform-origin: 0 0; animation-delay: 1.25s;">
-      <line x1="0" y1="0" x2="-10" y2="0" stroke="#c9a74c" stroke-width="3" />
-      <rect x="-16" y="-3" width="6" height="6" fill="#c9a74c" />
-    </g>
-  </g>
-</svg>
-
-<h1>404</h1>
 <p>La pagina che cerchi non esiste o è stata spostata.</p>
-<a class="button" href="index.html">Torna alla Home</a>
+<a href="index.html">Torna alla Home</a>
 
 </body>
 </html>
