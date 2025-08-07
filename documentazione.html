@@ -6,8 +6,8 @@
   <title>Documentazione – Orbea Alma H30</title>
   <link rel="icon" href="favicon.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <style>
-    /* Stesso CSS della home (puoi estrarlo in un file separato per manutenzione) */
     :root {
       --carbon: #121212;
       --carbon-deep: #0d0d0d;
@@ -18,9 +18,7 @@
       --tricolor: linear-gradient(to right, #008C45, #F4F5F0, #CD212A);
       --transition: 0.3s ease-in-out;
     }
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body {
       font-family: 'Outfit', sans-serif;
       background-color: var(--carbon);
@@ -40,9 +38,7 @@
       z-index: 1000;
       box-shadow: 0 2px 20px rgba(0,0,0,0.7);
     }
-    .logo {
-      height: 38px;
-    }
+    .logo { height: 38px; }
     nav {
       display: flex;
       align-items: center;
@@ -92,8 +88,28 @@
       line-height: 1.8;
       color: var(--anthracite);
     }
-    ul {
-      padding-left: 1.5rem;
+    ul { padding-left: 1.5rem; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .gallery a {
+      display: block;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      transition: transform var(--transition);
+    }
+    .gallery a:hover {
+      transform: scale(1.03);
+    }
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
     }
     footer {
       background: var(--carbon-deep);
@@ -105,9 +121,7 @@
       border-top: 1px solid rgba(255,255,255,0.05);
     }
     @media (max-width: 768px) {
-      nav a {
-        margin-left: 1rem;
-      }
+      nav a { margin-left: 1rem; }
     }
   </style>
 </head>
@@ -144,11 +158,36 @@
       <li>Focus su leggerezza e resa estetica</li>
     </ul>
   </section>
+
+  <section class="section">
+    <h3>Galleria Immagini</h3>
+    <div class="gallery">
+      <a href="img/1.jpg" class="glightbox" data-gallery="gallery" data-title="Immagine 1" data-desc="Scarica l'immagine" download><img src="img/1.jpg" alt="1"></a>
+      <a href="img/2.jpg" class="glightbox" data-gallery="gallery" data-title="Immagine 2" data-desc="Scarica l'immagine" download><img src="img/2.jpg" alt="2"></a>
+      <a href="img/3.jpg" class="glightbox" data-gallery="gallery" data-title="Immagine 3" data-desc="Scarica l'immagine" download><img src="img/3.jpg" alt="3"></a>
+      <!-- Aggiungi altre immagini numerate qui -->
+    </div>
+  </section>
 </main>
 
 <footer>
   © 2025 miniutti.it — progetto indipendente ispirato a Orbea®
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+<script>
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,
+    zoomable: true,
+    draggable: true,
+    autoplayVideos: true,
+    closeButton: true,
+    openEffect: 'zoom',
+    slideEffect: 'fade'
+  });
+</script>
 
 </body>
 </html>
