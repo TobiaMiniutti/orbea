@@ -120,6 +120,20 @@
       letter-spacing: 0.5px;
       border-top: 1px solid rgba(255,255,255,0.05);
     }
+    .glightbox-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 0.5rem 1rem;
+      background: var(--golden);
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      z-index: 9999;
+      margin-top: 10px;
+      display: inline-block;
+    }
     @media (max-width: 768px) {
       nav a { margin-left: 1rem; }
     }
@@ -162,11 +176,10 @@
   <section class="section">
     <h3>Galleria Immagini</h3>
     <div class="gallery">
-      <a href="img/1.jpg" class="glightbox" data-gallery="gallery" data-title="Immagine 1" data-desc="Scarica l'immagine" download><img src="img/1.jpg" alt="1"></a>
-      <a href="img/2.jpg" class="glightbox" data-gallery="gallery" data-title="Immagine 2" data-desc="Scarica l'immagine" download><img src="img/2.jpg" alt="2"></a>
-      <a href="img/3.png" class="glightbox" data-gallery="gallery" data-title="Immagine 3" data-desc="Scarica l'immagine" download><img src="img/3.png" alt="3"></a>
-      <a href="img/4.png" class="glightbox" data-gallery="gallery" data-title="Immagine 4" data-desc="Scarica l'immagine" download><img src="img/4.png" alt="3"></a>
-      <!-- Aggiungi altre immagini numerate qui -->
+      <a href="img/1.jpg" class="glightbox" data-gallery="gallery" data-title="Immagine 1"><img src="img/1.jpg" alt="1"></a>
+      <a href="img/2.jpg" class="glightbox" data-gallery="gallery" data-title="Immagine 2"><img src="img/2.jpg" alt="2"></a>
+      <a href="img/3.png" class="glightbox" data-gallery="gallery" data-title="Immagine 3"><img src="img/3.png" alt="3"></a>
+      <a href="img/4.png" class="glightbox" data-gallery="gallery" data-title="Immagine 4"><img src="img/4.png" alt="4"></a>
     </div>
   </section>
 </main>
@@ -186,7 +199,30 @@
     autoplayVideos: true,
     closeButton: true,
     openEffect: 'zoom',
-    slideEffect: 'fade'
+    slideEffect: 'fade',
+    beforeSlideLoad: (slide) => {
+      const container = slide.node;
+      const img = container.querySelector('img');
+      if (img) {
+        const src = img.src;
+        // Download Button
+        const downloadBtn = document.createElement('a');
+        downloadBtn.href = src;
+        downloadBtn.textContent = '⬇ Download';
+        downloadBtn.download = '';
+        downloadBtn.className = 'glightbox-button';
+        container.appendChild(downloadBtn);
+
+        // Apri Immagine Button
+        const openBtn = document.createElement('a');
+        openBtn.href = src;
+        openBtn.textContent = '🔗 Apri';
+        openBtn.target = '_blank';
+        openBtn.className = 'glightbox-button';
+        openBtn.style.top = '60px';
+        container.appendChild(openBtn);
+      }
+    }
   });
 </script>
 
